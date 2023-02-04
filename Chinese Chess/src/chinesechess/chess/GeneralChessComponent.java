@@ -1,11 +1,7 @@
 package xyz.chengzi.cs102a.chinesechess.chess;
-
-import xyz.chengzi.cs102a.chinesechess.chessboard.ChessboardComponent;
 import xyz.chengzi.cs102a.chinesechess.chessboard.ChessboardPoint;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GeneralChessComponent extends ChessComponent {
     public GeneralChessComponent(ChessboardPoint chessboardPoint, Point location, ChessColor chessColor) {
@@ -44,18 +40,14 @@ public class GeneralChessComponent extends ChessComponent {
         if (destination.getY() != source.getY() & destination.getX() != source.getX())
             return false;
         if (source.getX() == destination.getX()) {
-            if (d2 != 1 | destination.getY() < 3 | destination.getY() > 5)
-                return false;
+            return !(d2 != 1 | destination.getY() < 3 | destination.getY() > 5);
         } else {
             if (getChessColor().equals(ChessColor.RED)) {
-                if (d1 != 1 | destination.getX() < 7)
-                    return false;
+                return !(d1 != 1 | destination.getX() < 7);
             } else {
-                if (d1 != 1 | destination.getX() > 2)
-                    return false;
+                return !(d1 != 1 | destination.getX() > 2);
             }
         }
-        return true;
     }
 
 

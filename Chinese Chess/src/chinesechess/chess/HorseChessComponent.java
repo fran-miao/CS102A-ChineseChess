@@ -1,11 +1,8 @@
 package xyz.chengzi.cs102a.chinesechess.chess;
 
-import xyz.chengzi.cs102a.chinesechess.chessboard.ChessboardComponent;
 import xyz.chengzi.cs102a.chinesechess.chessboard.ChessboardPoint;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class HorseChessComponent extends ChessComponent {
     public HorseChessComponent(ChessboardPoint chessboardPoint, Point location, ChessColor chessColor) {
@@ -51,39 +48,19 @@ public class HorseChessComponent extends ChessComponent {
 
         if ((destination.getY() == source.getY() + 2 & destination.getX() == source.getX() + 1) |
                 (destination.getY() == source.getY() + 2 & destination.getX() == source.getX() - 1)) {
-            if (!(chessboard[source.getX()][source.getY() + 1] instanceof EmptySlotComponent))
-                return false;
+            return chessboard[source.getX()][source.getY() + 1] instanceof EmptySlotComponent;
         } else if ((destination.getY() == source.getY() - 2 & destination.getX() == source.getX() + 1) |
                 (destination.getY() == source.getY() - 2 & destination.getX() == source.getX() - 1)) {
-            if (!(chessboard[source.getX()][source.getY() - 1] instanceof EmptySlotComponent))
-                return false;
+            return chessboard[source.getX()][source.getY() - 1] instanceof EmptySlotComponent;
         } else if ((destination.getY() == source.getY() + 1 & destination.getX() == source.getX() + 2) |
                 (destination.getY() == source.getY() - 1 & destination.getX() == source.getX() + 2)) {
-            if (!(chessboard[source.getX() + 1][source.getY()] instanceof EmptySlotComponent))
-                return false;
+            return chessboard[source.getX() + 1][source.getY()] instanceof EmptySlotComponent;
         } else if ((destination.getY() == source.getY() + 1 & destination.getX() == source.getX() - 2) |
                 (destination.getY() == source.getY() - 1 & destination.getX() == source.getX() - 2)) {
-            if (!(chessboard[source.getX() - 1][source.getY()] instanceof EmptySlotComponent))
-                return false;
+            return chessboard[source.getX() - 1][source.getY()] instanceof EmptySlotComponent;
         }
         return true;
     }
-
-
-//    public ArrayList<int[]> AllPossibleNextMove() {
-//        ChessComponent[][] chessboard = ChessboardComponent.chessboard;
-//        ArrayList<int[]> e = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            for (int j = 0; j < 9; j++) {
-//                if (canMoveTo(chessboard, chessboard[i][j].getChessboardPoint())) {
-//                    if (!(getChessColor().equals(chessboard[i][j].getChessColor()))) {
-//                        e.add(new int[]{i, j});
-//                    }
-//                }
-//            }
-//        }
-//        return e;
-//    }
 
 
     public void recordStep(ChessboardPoint source, ChessboardPoint destination) {
